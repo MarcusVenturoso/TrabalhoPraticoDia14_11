@@ -20,6 +20,7 @@ $produtoToEdit = null;
 if (isset($_GET['edit'])) {
     $produtoToEdit = getProduto($_GET['edit']);
 }
+
 ?>
 
 <?php include 'header.php'; ?> 
@@ -49,7 +50,7 @@ if (isset($_GET['edit'])) {
     <div class="container mt-4">
         <h2 class="text-center mb-4">Cadastro de Produtos</h2>
         
-        <form method="POST" action="" class="mb-4">
+        <form method="POST" enctype="multipart/form-data" action="produtos_cadastro.php" class="mb-4">
             <input type="hidden" id="id" name="id" value="<?php echo $produtoToEdit['id'] ?? ''; ?>">
 
             <div class="form-group">
@@ -83,8 +84,8 @@ if (isset($_GET['edit'])) {
             </div>
 
             <div class="form-group">
-                <label for="url_img">URL da Imagem:</label>
-                <input type="url" id="url_img" name="url_img" class="form-control" value="<?php echo $produtoToEdit['url_img'] ?? ''; ?>" required>
+                <label for="url_img">Imagem do Produto:</label>
+                <input type="file" id="url_img" name="url_img" class="form-control">
             </div>
 
             <div class="form-check">

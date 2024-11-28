@@ -1,39 +1,37 @@
-<?php include 'principal_controller.php'; ?>
-<?php include 'produtos_controller.php'; ?>
+<?php 
+include 'principal_controller.php'; 
+
+// Pega todos os produtos para preencher os dados da tabela 
+$produtos = getProdutos();
+?>
+
 <?php include 'header.php'; ?>
 
-<div class="flex-grow-1">
-        <!-- Conteúdo da página vai aqui -->
-        <h2>Olá, <?php echo htmlspecialchars($nome); ?>!</h2>
+<div class="container">
+    <div class="flex-grow-1">
+        <!--<h3>Olá, <?php echo htmlspecialchars($nome); ?>!</h3>
 
         <form method="POST" action="">
             <input type="submit" name="logout" value="Logout">
-        </form>
-        <h2 class="text-center mb-4">Produtos Cadastrados</h2>
-
-<div class="row">
-    <!-- Faz um loop FOR no resultset de produtos e preenche os cards -->
-    <?php foreach ($produtos as $produto): ?>
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $produto['nome']; ?></h5>
-                    <p class="card-text"><strong>Descrição:</strong> <?php echo $produto['descricao']; ?></p>
-                    <p class="card-text"><strong>Marca:</strong> <?php echo $produto['marca']; ?></p>
-                    <p class="card-text"><strong>Modelo:</strong> <?php echo $produto['modelo']; ?></p>
-                    <p class="card-text"><strong>Valor Unitário:</strong> R$ <?php echo number_format($produto['valorunitario'], 2, ',', '.'); ?></p>
-                    <p class="card-text"><strong>Categoria:</strong> <?php echo $produto['categoria']; ?></p>
-                    <p class="card-text"><strong>Ativo:</strong> <?php echo $produto['ativo'] ? 'Sim' : 'Não'; ?></p>
-                    <div class="d-flex justify-content-between">
-                        <a href="?edit=<?php echo $produto['id']; ?>" class="btn btn-primary btn-sm">Editar</a>
-                        <a href="?delete=<?php echo $produto['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
-                    </div>
-                </div>
+        </form>-->
+    </div>
+</div>
+<div class="container p-2">
+    <?php foreach ($produtos as $produto): ?>    
+        <div class="card  float-left" style="width: 18rem;">
+            <img src="<?php echo $produto['url_img']; ?>" class="rounded mx-auto d-block" alt="Imagem do Produto" style="width: 100px;">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $produto['nome']; ?></h5>
+                <p class="card-text"><?php echo $produto['descricao']; ?></p>
+                <p><strong>Preço:</strong> R$ <?php echo number_format($produto['valorunitario'], 2, ',', '.'); ?></p>
+                <!-- Formulário para adicionar ao carrinho -->
+                <form method="POST" action="principal.php">
+                    <input type="hidden" name="id_produto" value="<?php echo $produto['id']; ?>">
+                    <button type="submit" name="adicionar_produto" class="btn btn-primary btn-block">Comprar</button>
+                </form>
             </div>
         </div>
     <?php endforeach; ?>
 </div>
-    </div>
-
 
 <?php include 'footer.php'; ?>
