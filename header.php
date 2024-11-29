@@ -9,7 +9,7 @@
 <body class="d-flex flex-column min-vh-100 bg-light">
     <header class="bg-info d-flex align-items-center" style="height: 3cm;">
         <div class="container text-center">
-            <h1>Sistema e-Commerce</h1>
+            <h1>Bebidas Venturoso's</h1>
         </div>
     </header>
     <nav class="navbar navbar-expand-lg p-0 navbar-dark bg-dark">

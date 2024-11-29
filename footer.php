@@ -1,7 +1,7 @@
 <footer class="bg-dark text-white d-flex align-items-center" style="height: 1cm;">
         <div class="container text-center">
         <p class="mb-0">
-            &copy; <?php echo date("Y"); ?> Sistema E-Comerce. Todos os direitos reservados.
+            &copy; <?php echo date("Y"); ?> Bebidas Venturoso's. Todos os direitos reservados.
             <?php if (isset($_SESSION['nome'])): ?>
                 | Usuário Logado: <strong><?php echo htmlspecialchars($_SESSION['nome']); ?></strong>
                 <?php endif; ?>   
