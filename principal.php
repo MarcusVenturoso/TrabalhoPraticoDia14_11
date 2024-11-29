@@ -9,11 +9,11 @@ $produtos = getProdutos();
 
 <div class="container">
     <div class="flex-grow-1">
-        <!--<h3>Olá, <?php echo htmlspecialchars($nome); ?>!</h3>
+        <h3>Bem vindo, <?php echo htmlspecialchars($nome); ?>!</h3>
 
         <form method="POST" action="">
             <input type="submit" name="logout" value="Logout">
-        </form>-->
+        </form>
     </div>
 </div>
 <div class="container p-2">

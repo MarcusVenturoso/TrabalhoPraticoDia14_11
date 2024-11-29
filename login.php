@@ -7,18 +7,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $senha = $_POST['senha'];
 
     // Prepara e executa a consulta na tabela de usuários
-    $stmt = $conn->prepare("SELECT nome FROM usuarios WHERE email = ? AND senha = ?");
+    $stmt = $conn->prepare("SELECT id, nome FROM usuarios WHERE email = ? AND senha = ?");
     $stmt->bind_param("ss", $email, $senha);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($nome);
+        $stmt->bind_result($id, $nome);
         $stmt->fetch();
         
         //Registra o usuário na sessão
         $_SESSION['email'] = $email;
         $_SESSION['nome'] = $nome;
+        $_SESSION['id'] = $id;
 
         header("Location: principal.php");
         exit();
